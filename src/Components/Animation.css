@@ -1,0 +1,46 @@
+.marquee{
+    animation-name: scrollUp;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+
+}
+@keyframes scrollUp{
+    0%{
+        transform: translateY(100%);
+    }100%{
+        transform: translateY(-100%);
+    }
+}
+
+.listdiv{
+overflow: hidden;
+}
+@media(max-width:768px){
+    .mainContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+    .sidebar{
+        width: 100%;
+    }
+}
+/* 
+.trending a:not(:first-child) {
+    animation: scrollIn .5s ease-in-out both; 
+    transition: .5s all ease-in-out;
+    animation-timeline: view(40%30%);
+}
+
+@keyframes scrollIn {
+    from {
+        opacity: 0;
+        transform: translateX(200px) scale(.3);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+} */

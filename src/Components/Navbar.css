@@ -1,0 +1,10 @@
+input{
+
+outline: none;
+}
+input::placeholder{
+    color: rgba(117, 219, 117, 0.456);
+}
+input{
+    color: #fff;
+}

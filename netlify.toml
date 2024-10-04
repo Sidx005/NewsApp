@@ -1,0 +1,21 @@
+[build]
+  publish = "dist" # Specify the directory to publish
+  command = "npm run build" # The command to build your site
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Add headers for all responses
+[[headers]]
+  for = "/*"  # Applies headers to all routes
+  [headers.values]
+    Access-Control-Allow-Origin = "*" # Allow all origins, or specify your frontend URL
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+
+# Functions settings
+[functions]
+  directory = "netlify/functions" # Specify the directory for your Netlify functions

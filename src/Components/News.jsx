@@ -22,16 +22,22 @@ export class News extends Component {
         };
         document.title=`NewsWeb-${this.props.category}`
     }
-    async updateNews(){
-        this.setState({loading:true});
-        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_API_KEY}&page=${this.state.page}&pageSize=${this.props.pageSize}&category=${this.props.category}`;
-        let data=await fetch(url);
-        let parseData=await data.json();
-        this.setState({ articles: parseData.articles, totalResults: parseData.totalResults, loading: false });
-    console.log(parseData);
-    
-    
+    async updateNews() {
+        this.setState({ loading: true });
+        try {
+            let url = `/api/news?category=${this.props.category}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+            let response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.statusText}`);
+            }
+            let parseData = await response.json();
+            this.setState({ articles: parseData.articles, totalResults: parseData.totalResults, loading: false });
+        } catch (error) {
+            console.error(error);
+            this.setState({ loading: false });
+        }
     }
+    
     async componentDidMount() {
 this.updateNews(this.state.page)
         

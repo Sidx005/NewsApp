@@ -25,7 +25,7 @@ export class News extends Component {
     async updateNews() {
         this.setState({ loading: true });
         try {
-            let url = `/api/news?category=${this.props.category}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+            let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_API_KEY}&page=${this.state.page}&pageSize=${this.state.pageSize}&category=${this.props.category}`;
             let response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`Error fetching data: ${response.statusText}`);
